@@ -18,9 +18,10 @@ Nope. That way no longer works.
 from PIL import Image
 ```
 
-Thirdly, `pillow` must be installed `$ pipenv insall pillow` and called as `PIL`
+Thirdly, `pillow` must be installed `$ pipenv install pillow` and called as
+`PIL`
 
 ha-larious
 
 This all has to do with a whole bunch of goofyness which can be found
-(here)[https://stackoverflow.com/questions/49247310/no-module-named-pil]:
+[here](https://stackoverflow.com/questions/49247310/no-module-named-pil):
