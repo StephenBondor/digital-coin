@@ -8,8 +8,7 @@ class Tx:  # a transaction
         self.tx_outs = tx_outs
 
     def sign_input(self, index, private_key):
-        spend_message = self.tx_ins[index].spend_message()
-        signature = private_key.sign(spend_message)
+        signature = private_key.sign(self.tx_ins[index].spend_message())
         self.tx_ins[index].signature = signature
 
 
