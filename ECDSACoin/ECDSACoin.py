@@ -1,7 +1,7 @@
 import pickle
 from ecdsa import SigningKey, SECP256k1, BadSignatureError
 
-# the bank is the issuing source of true, bad bank!
+# the bank is the issuing source of truth, bad bank!
 bank_private_key = SigningKey.generate(curve=SECP256k1)
 bank_public_key = bank_private_key.get_verifying_key()
 
@@ -41,6 +41,11 @@ def issue(public_key):
     signature = bank_private_key.sign(message)  # signing with the banks private key
     transfer = Transfer(signature, public_key)  # Create transfer
     return ECDSACoin([transfer])  # Return the newly created coin
+
+
+# Alternatively, but ew gross:
+# def issue(pub_key):
+#     return ECDSACoin([Transfer(bank_private_key.sign(serialize(pub_key)), pub_key)])
 
 
 if __name__ == "__main__":
@@ -112,3 +117,5 @@ if __name__ == "__main__":
     coin.transfers.append(alice_to_bob)
     coin.validate()
     print("this coin is owned by", get_owner(coin))
+
+    # ECDSA COIN DOES NOT SOLVE THE DOUBLE SPEND PROBLEM!
