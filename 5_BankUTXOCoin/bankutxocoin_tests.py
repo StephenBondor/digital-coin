@@ -2,6 +2,9 @@ import uuid
 from ecdsa import SigningKey, SECP256k1
 from mybankutxocoin import TxIn, TxOut, Tx, Bank
 
+# one of the problems that this code has it that someone
+# can change the amounts and the code still verifies as legit transactions
+
 # The usual suspects
 bob_private_key = SigningKey.generate(curve=SECP256k1)
 alice_private_key = SigningKey.generate(curve=SECP256k1)
