@@ -6,22 +6,6 @@ from exercises import *
 ############
 
 
-def test_int_to_little_endian():
-    integer = 22
-    bytes = b"\x16\x00\x00\x00\x00\x00\x00\x00\x00\x00"
-    result = int_to_little_endian(integer, 10)
-    assert bytes == result, f"Correct answer: {bytes}. Your answer: {result}"
-    print("Little Endian Tests passed!")
-
-
-def test_int_to_big_endian():
-    integer = 22
-    bytes = b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x16"
-    result = int_to_big_endian(integer, 10)
-    assert bytes == result, f"Correct answer: {bytes}. Your answer: {result}"
-    print("Big Endian Tests passed!")
-
-
 def test_serialize_version_payload_integers():
     now = int(time.time()) - 10
     version_payload_dict = serialize_version_payload(
@@ -71,16 +55,6 @@ def test_serialize_version_payload_services_dict():
     assert version_payload["nonce"] == 4
     assert version_payload["start_height"] == 50
     print("Serialize Version Payload Test passed!")
-
-
-def test_bytes_to_bool():
-    assert (
-        bool_to_bytes(True) == b"\x01"
-    ), f'bool_to_bytes(False) should equal b"\\x01", was {bool_to_bytes(True)}'
-    assert (
-        bool_to_bytes(False) == b"\x00"
-    ), f'bool_to_bytes(False) should equal b"\\x00", was {bool_to_bytes(False)}'
-    print("Bool to Bytes Test passed!")
 
 
 def test_serialize_version_payload_booleans():
@@ -158,12 +132,9 @@ def test_serialize_message():
 
 
 if __name__ == "__main__":
-    test_int_to_little_endian()
-    test_int_to_big_endian()
     test_serialize_version_payload_integers()
     test_services_dict_to_int()
     test_serialize_version_payload_services_dict()
-    test_bytes_to_bool()
     test_serialize_version_payload_booleans()
     test_serialize_version_payload_VarStr()
     test_serialize_version_payload_network_addresses()
