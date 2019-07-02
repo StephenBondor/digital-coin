@@ -12,6 +12,9 @@ def double_sha256(s):
 def compute_checksum(s):
     return double_sha256(s)[:4]
 
+class BitcoinProtocolError(Exception):
+    pass
+
 
 ####################
 # READING MESSAGES #
