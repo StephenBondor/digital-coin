@@ -12,6 +12,7 @@ def double_sha256(s):
 def compute_checksum(s):
     return double_sha256(s)[:4]
 
+# Consider adding more standard bitcoin functioanlity?
 
 ####################
 # READING MESSAGES #
